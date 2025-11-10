@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Data Scientist Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    >
+  </head>
+  <body>
+    <div class="hero">
+      <div class="hero-content">
+        <h1>🧠 Data Scientist Assistant</h1>
+        <p>Automate your data cleaning, preprocessing, and model training with one click.</p>
+
+        <form action="{{ url_for('analyze') }}" method="post" enctype="multipart/form-data" class="upload-form">
+          <input type="file" name="dataset" accept=".csv" id="fileInput" required>
+          <label for="fileInput" class="file-label">📁 Choose CSV File</label>
+          <button type="submit" class="upload-btn">🚀 Analyze Dataset</button>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="message-box">
+              {% for msg in messages %}
+                <p>{{ msg }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        <p class="note">Your processed files will be available for download after analysis.</p>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2025 Data Scientist Assistant | Built with 💡 Flask & Machine Learning</p>
+    </footer>
+  </body>
+</html>

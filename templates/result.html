@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Data Scientist Assistant - Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Analysis Completed</h1>
+      <a href="{{ url_for('index') }}">&larr; Back</a>
+      <h2>Report</h2>
+      <pre>{{ report | tojson(indent=2) }}</pre>
+      {% if zip_name %}
+        <a class="download" href="{{ url_for('download', zipname=zip_name) }}">Download Results ZIP</a>
+      {% endif %}
+    </div>
+  </body>
+</html>
